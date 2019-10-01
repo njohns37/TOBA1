@@ -7,7 +7,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="styles/main.css" type="text/css"/>
-        
     </head>
     <body>
         <h1>TOBA Titan Online Banking</h1>
@@ -15,13 +14,14 @@
         <a href="login.jsp">Login</a>
         <a href="transaction.jsp">Transactions</a>
         <h2> Account Activity here </h2>
-            <c:if test="${session.user != null}">
-                <p>Hello${NewCustomerServlet.user.firstName.lastNmae}</p>
-            </c:if>
-            <c:if test="${session.user == null}">
+        <c:choose>
+            <c:when test="${session.user != null}">
+                <p>Hello${session.user.firstName.lastName}</p>
+            </c:when>
+            <c:otherwise>
                 <p>Not Logged In</p>            
-            </c:if>
-            
+            </c:otherwise>
+        </c:choose>   
     </body>
      <c:import url="/includes/footer.jsp" />
 </html>
