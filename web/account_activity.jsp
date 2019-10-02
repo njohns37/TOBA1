@@ -13,15 +13,16 @@
         <a href="index.jsp">Home</a>
         <a href="login.jsp">Login</a>
         <a href="transaction.jsp">Transactions</a>
-        <h2> Account Activity here </h2>
-        <c:choose>
-            <c:when test="${session.user != null}">
-                <p>Hello${session.user.firstName.lastName}</p>
-            </c:when>
-            <c:otherwise>
+        
+         <c:if test="${session.user != null}">
+                <p>Hello${session.getAttribute(user.firstName.lastName)}</p>
+         </c:if>         
+         <c:if test="${session.user == null}">
                 <p>Not Logged In</p>            
-            </c:otherwise>
-        </c:choose>   
+         </c:if>
+            
     </body>
-     <c:import url="/includes/footer.jsp" />
+    
+    <c:import url="/includes/footer.jsp" />
+          
 </html>
