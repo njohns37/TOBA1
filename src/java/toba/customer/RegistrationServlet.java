@@ -62,17 +62,12 @@ public class RegistrationServlet extends HttpServlet {
                 session.setAttribute("user", user);
                 
                // insert user
-               userDB.insert(user);
+               //userDB.insert(user);
                
                 //set user object and set url
                request.setAttribute("user", user);
                url = "/success.jsp";
-               
-               if (action.equals("submit")){
-                    request.setAttribute("password", user);
-                    url = "/account_activity.jsp";
-                }
-                                          
+                                                        
             // forward request
             getServletContext()
                 .getRequestDispatcher(url)

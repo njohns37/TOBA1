@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,12 +30,14 @@ public class AuthServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            HttpSession session = request.getSession(); 
             String url = "/login.jsp";
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
             
             if (username.equals("jsmith@toba.com") && password.equals("letmein"))
             {
+            session.setAttribute("Username", "jsmith@toba.com");
             url = "/account_activity.jsp";
             }
             else{
